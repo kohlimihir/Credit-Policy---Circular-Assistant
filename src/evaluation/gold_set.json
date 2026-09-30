@@ -1,0 +1,1082 @@
+[
+  {
+    "id": 1,
+    "question": "What is the minimum Capital to Risk-weighted Assets Ratio (CRAR) for NBFC-ML?",
+    "expected_answer": "NBFC-ML are required to maintain a minimum CRAR of 15%.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 2,
+    "question": "What is the Tier I capital requirement for NBFC-ND-SI?",
+    "expected_answer": "NBFC-ND-SI shall maintain a minimum Tier I capital of 10%.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 3,
+    "question": "What is the Net Owned Fund (NOF) requirement for starting an NBFC?",
+    "expected_answer": "The minimum NOF required to commence or carry on the business of NBFC is Rs 2 crore.",
+    "relevant_documents": ["Master_Direction_NBFC_Non_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 4,
+    "question": "What is the asset size threshold for classifying an NBFC as systemically important?",
+    "expected_answer": "An NBFC with asset size of Rs 500 crore or more is classified as systemically important (NBFC-ND-SI).",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 5,
+    "question": "What are the NPA classification norms for NBFC loans?",
+    "expected_answer": "An asset shall be classified as NPA if interest or principal is overdue for a period of more than 90 days.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 6,
+    "question": "What is the provisioning requirement for sub-standard assets for NBFCs?",
+    "expected_answer": "A general provision of 10% of total outstanding shall be made for sub-standard assets.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 7,
+    "question": "What is the single borrower exposure limit for NBFC-ND-SI?",
+    "expected_answer": "The exposure to a single borrower shall not exceed 25% of the Tier I capital of the NBFC-ND-SI.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 8,
+    "question": "What is the group borrower exposure limit for NBFC-ND-SI?",
+    "expected_answer": "The exposure to a group of connected borrowers shall not exceed 40% of the Tier I capital.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 9,
+    "question": "What are the KYC requirements for opening an account at an NBFC?",
+    "expected_answer": "NBFCs must carry out Customer Due Diligence including obtaining officially valid documents for identity and address verification.",
+    "relevant_documents": ["Master_Direction_KYC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 10,
+    "question": "What documents are considered officially valid documents (OVDs) for KYC?",
+    "expected_answer": "OVDs include Aadhaar, PAN, Passport, Voter ID, Driving License, and NREGA Job Card.",
+    "relevant_documents": ["Master_Direction_KYC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 11,
+    "question": "What is the time limit for disbursing a sanctioned loan as per fair practices code?",
+    "expected_answer": "The loan should be disbursed within the time stipulated in the sanction letter, along with all terms and conditions.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 12,
+    "question": "What are the requirements for a loan rejection letter under the fair practices code?",
+    "expected_answer": "If the loan application is rejected, the NBFC shall communicate in writing the reasons for rejection to the applicant.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 13,
+    "question": "What is the maximum loan amount for P2P lending platforms per lender?",
+    "expected_answer": "The aggregate exposure of a lender across all P2P platforms shall not exceed Rs 50 lakh.",
+    "relevant_documents": ["Master_Direction_P2P_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 14,
+    "question": "Can an NBFC-P2P platform provide credit enhancement or guarantee?",
+    "expected_answer": "No, NBFC-P2P platforms shall not provide any credit enhancement or credit guarantee.",
+    "relevant_documents": ["Master_Direction_P2P_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 15,
+    "question": "What is the definition of microfinance loans under RBI regulations?",
+    "expected_answer": "Microfinance loans are collateral-free loans given to households having annual household income up to Rs 3 lakh.",
+    "relevant_documents": ["Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 16,
+    "question": "What is the maximum loan amount for microfinance under RBI norms?",
+    "expected_answer": "The repayment obligations of a borrower shall not exceed 50% of the household income for microfinance loans.",
+    "relevant_documents": ["Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 17,
+    "question": "What are the interest rate transparency requirements for NBFCs?",
+    "expected_answer": "NBFCs shall adopt an interest rate model taking into account relevant factors and communicate the annualized rate to the borrower.",
+    "relevant_documents": ["Master_Direction_Interest_Rate_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 18,
+    "question": "What is the minimum NOF for Housing Finance Companies?",
+    "expected_answer": "The minimum NOF for Housing Finance Companies is Rs 25 crore.",
+    "relevant_documents": ["Master_Direction_Housing_Finance_Companies.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 19,
+    "question": "What are the digital lending guidelines regarding third-party involvement?",
+    "expected_answer": "All loan servicing and repayment shall be done in the RE's bank account only. No third-party pass-through account is permitted.",
+    "relevant_documents": ["Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 20,
+    "question": "What is the requirement for key fact statement under digital lending guidelines?",
+    "expected_answer": "A Key Fact Statement (KFS) in a standardized format must be provided to the borrower before signing the loan agreement.",
+    "relevant_documents": ["Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 21,
+    "question": "What are the corporate governance requirements for independent directors in NBFCs?",
+    "expected_answer": "NBFCs in upper and top layers shall have at least one half of the board comprising independent directors.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 22,
+    "question": "Can an NBFC outsource core management functions?",
+    "expected_answer": "NBFCs shall not outsource core management functions including internal audit, compliance, and KYC activities.",
+    "relevant_documents": ["Master_Direction_Outsourcing_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 23,
+    "question": "What is the provisioning for doubtful assets for NBFCs?",
+    "expected_answer": "For doubtful assets, provision is made at 20% for doubtful up to 1 year, 30% for 1-3 years, and 50% for more than 3 years on the unsecured portion.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 24,
+    "question": "What is the provisioning requirement for loss assets?",
+    "expected_answer": "Loss assets shall be written off or fully provided for at 100%.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 25,
+    "question": "What is the priority sector lending target for banks?",
+    "expected_answer": "Domestic scheduled commercial banks shall achieve the overall target of 40% of adjusted net bank credit for priority sector lending.",
+    "relevant_documents": ["Master_Direction_Priority_Sector_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 26,
+    "question": "What percentage of priority sector lending should go to weaker sections?",
+    "expected_answer": "12% of adjusted net bank credit shall be directed towards weaker sections under priority sector.",
+    "relevant_documents": ["Master_Direction_Priority_Sector_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 27,
+    "question": "What is the classification of agricultural loans under priority sector?",
+    "expected_answer": "Agriculture constitutes a sub-target of 18% of ANBC under priority sector, of which 8% is for small and marginal farmers.",
+    "relevant_documents": ["Master_Direction_Priority_Sector_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 28,
+    "question": "What are the requirements for a grievance redressal mechanism at NBFCs?",
+    "expected_answer": "Every NBFC shall have a grievance redressal mechanism, appoint a Nodal Officer, display the officer's details at branches and on the website.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 29,
+    "question": "What is the timeline for CDD/KYC review for high-risk customers?",
+    "expected_answer": "For high-risk customers, KYC/CDD shall be reviewed at least once in every two years.",
+    "relevant_documents": ["Master_Direction_KYC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 30,
+    "question": "What are the NBFC regulations for accepting public deposits?",
+    "expected_answer": "NBFC-ND (Non-Deposit taking) cannot accept public deposits. Only NBFC-D with specific RBI authorization can accept deposits.",
+    "relevant_documents": ["Master_Direction_NBFC_Non_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 31,
+    "question": "What is the maximum deposit amount an NBFC-D can accept?",
+    "expected_answer": "The quantum of public deposits outstanding shall not exceed 1.5 times of NOF for an NBFC-D.",
+    "relevant_documents": ["Master_Direction_NBFC_Non_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 32,
+    "question": "What is the minimum investment grade rating required for accepting deposits?",
+    "expected_answer": "Only NBFCs having minimum investment grade rating from an approved credit rating agency are allowed to accept deposits.",
+    "relevant_documents": ["Master_Direction_NBFC_Non_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 33,
+    "question": "What are the four layers under the Scale Based Regulation framework for NBFCs?",
+    "expected_answer": "The four layers are: Base Layer (NBFC-BL), Middle Layer (NBFC-ML), Upper Layer (NBFC-UL), and Top Layer (NBFC-TL).",
+    "relevant_documents": ["Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 34,
+    "question": "What are the criteria for classification into the Upper Layer (NBFC-UL)?",
+    "expected_answer": "NBFCs identified as NBFC-UL are based on a set of parameters and scoring methodology prescribed by RBI, with top 10 NBFCs by asset size automatically in this layer.",
+    "relevant_documents": ["Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 35,
+    "question": "What are the account aggregator data sharing requirements?",
+    "expected_answer": "Account Aggregators can retrieve or collect financial data only with explicit consent of the customer, in a standardized format.",
+    "relevant_documents": ["Master_Direction_Account_Aggregator.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 36,
+    "question": "What restrictions apply to recovery agents under the fair practices code?",
+    "expected_answer": "Recovery agents shall not resort to intimidation, use of muscle power, harassment, or any action that amounts to violation of the borrower's privacy.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 37,
+    "question": "What is the cooling off period for digital loans?",
+    "expected_answer": "A cooling off period or look-up period must be provided during which the borrower can exit the digital loan without penalty.",
+    "relevant_documents": ["Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 38,
+    "question": "What are the NBFC reporting requirements to RBI?",
+    "expected_answer": "NBFCs are required to submit various returns including monthly, quarterly, and annual returns through the COSMOS system to RBI.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 39,
+    "question": "Can NBFCs prepay penalty be charged on floating rate loans?",
+    "expected_answer": "NBFCs shall not charge prepayment penalty on floating rate term loans sanctioned to individual borrowers.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 40,
+    "question": "What language must the loan agreement be in as per fair practices code?",
+    "expected_answer": "The loan agreement shall be in a language understood by the borrower. NBFC shall provide a copy of the loan agreement along with a copy each of all enclosures.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 41,
+    "question": "What is the maximum tenure of deposits that an NBFC-D can accept?",
+    "expected_answer": "Deposits shall be for a minimum period of 12 months and a maximum period of 60 months.",
+    "relevant_documents": ["Master_Direction_NBFC_Non_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 42,
+    "question": "What are the fit and proper criteria for directors of NBFCs?",
+    "expected_answer": "Directors must satisfy fit and proper criteria including educational qualifications, experience, track record of integrity, and not being convicted of any offense.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 43,
+    "question": "What is the requirement for Risk Management Committee in NBFCs?",
+    "expected_answer": "NBFCs in upper and middle layers shall constitute a Risk Management Committee of the Board to oversee risk management policies.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 44,
+    "question": "What is the standard asset provisioning requirement for NBFC-ML?",
+    "expected_answer": "NBFC-ML shall make a general provision of 0.40% of the outstanding for standard assets.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 45,
+    "question": "What are the restrictions on charging interest on interest or compound interest?",
+    "expected_answer": "The rate of interest and manner of calculating interest shall be communicated to borrower upfront. No capitalization of charges except as per agreed terms.",
+    "relevant_documents": ["Master_Direction_Interest_Rate_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 46,
+    "question": "What is the definition of infrastructure lending for NBFC-IFC?",
+    "expected_answer": "Infrastructure Finance Company (IFC) deploys 75% of its total assets in infrastructure loans with minimum NOF of Rs 300 crore and minimum credit rating of A.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 47,
+    "question": "What are the requirements for NBFC registration with RBI?",
+    "expected_answer": "No company shall commence or carry on NBFC business without obtaining a Certificate of Registration from RBI under Section 45-IA of the RBI Act.",
+    "relevant_documents": ["Master_Direction_NBFC_Non_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 48,
+    "question": "What audit committee requirements exist for NBFC-ML?",
+    "expected_answer": "NBFC-ML shall constitute an Audit Committee comprising at least three members with majority being independent directors.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 49,
+    "question": "What are the CERSAI registration requirements for equitable mortgage?",
+    "expected_answer": "Creation of security interest by equitable mortgage shall be registered with CERSAI within 30 days of creation.",
+    "relevant_documents": ["Master_Direction_Housing_Finance_Companies.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 50,
+    "question": "What are the responsibilities of outsourcing service providers regarding data protection?",
+    "expected_answer": "Outsourcing service providers shall ensure confidentiality and security of customer data, with adequate data protection measures in the agreement.",
+    "relevant_documents": ["Master_Direction_Outsourcing_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "easy_lookup",
+    "answerable": true
+  },
+  {
+    "id": 51,
+    "question": "How do the CRAR requirements differ between NBFC-ML and NBFC-UL under the Scale Based Regulation framework?",
+    "expected_answer": "NBFC-ML requires 15% CRAR while NBFC-UL requires 15% CRAR with additional Common Equity Tier 1 of at least 9%.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 52,
+    "question": "How do the NPA classification norms for microfinance loans differ from general NBFC lending norms?",
+    "expected_answer": "The NPA norms for microfinance are 90 days overdue similar to general NBFC norms but microfinance has additional assessment requirements on household income.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf", "Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 53,
+    "question": "How do the KYC requirements for P2P lending platforms differ from those for traditional NBFCs?",
+    "expected_answer": "P2P platforms must perform KYC for both lenders and borrowers registering on the platform, similar to standard KYC norms but applied to both sides.",
+    "relevant_documents": ["Master_Direction_KYC.pdf", "Master_Direction_P2P_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 54,
+    "question": "How do the fair practices code requirements apply differently in the context of digital lending versus traditional NBFC lending?",
+    "expected_answer": "Digital lending adds requirements like Key Fact Statement, cooling off period, and prohibition of third-party pass-through accounts on top of standard FPC requirements.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf", "Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 55,
+    "question": "Compare the corporate governance requirements for NBFC-BL and NBFC-UL under Scale Based Regulation.",
+    "expected_answer": "NBFC-UL has enhanced governance with mandatory independent directors forming half the board, risk management committee, compensation committee, while NBFC-BL has lighter requirements.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 56,
+    "question": "How does the outsourcing framework interact with the digital lending guidelines regarding use of Lending Service Providers?",
+    "expected_answer": "LSPs under digital lending guidelines are a form of outsourcing but have additional restrictions including prohibition on direct customer interface for collections and disbursement through RE's accounts only.",
+    "relevant_documents": ["Master_Direction_Outsourcing_NBFC.pdf", "Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 57,
+    "question": "How do the exposure norms for NBFC-ND-SI apply when combined with priority sector lending targets?",
+    "expected_answer": "While single borrower exposure is capped at 25% of Tier I capital, priority sector loans to agriculture and weaker sections have separate sub-targets that must be met within these exposure limits.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf", "Master_Direction_Priority_Sector_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 58,
+    "question": "How do the interest rate guidelines for microfinance interact with the general NBFC interest rate direction?",
+    "expected_answer": "Microfinance loans have a specific cap where all-in cost to borrowers should not exceed a prescribed margin over cost of funds, while general NBFC interest rate direction requires transparency but doesn't cap rates.",
+    "relevant_documents": ["Master_Direction_Interest_Rate_NBFC.pdf", "Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 59,
+    "question": "What are the data sharing obligations when an NBFC uses Account Aggregator framework for lending decisions under KYC norms?",
+    "expected_answer": "Account Aggregator can share financial data only with explicit customer consent, and NBFCs must still perform their own CDD/KYC independently even when using AA-sourced data.",
+    "relevant_documents": ["Master_Direction_Account_Aggregator.pdf", "Master_Direction_KYC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 60,
+    "question": "How do the provisioning norms for HFCs differ from those for general NBFCs for secured housing loans?",
+    "expected_answer": "HFCs have differentiated provisioning norms with lower standard asset provisioning for individual housing loans compared to general NBFC provisioning norms.",
+    "relevant_documents": ["Master_Direction_Housing_Finance_Companies.pdf", "Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 61,
+    "question": "Explain how the SBR framework changes the outsourcing requirements across the four NBFC layers.",
+    "expected_answer": "Under SBR, upper layer NBFCs face stricter outsourcing oversight with board-level outsourcing policies, while base layer has lighter requirements, though core functions cannot be outsourced by any layer.",
+    "relevant_documents": ["Scale_Based_Regulation_Framework_NBFC.pdf", "Master_Direction_Outsourcing_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 62,
+    "question": "How do the P2P lending limits interact with KYC norms for lenders investing across multiple P2P platforms?",
+    "expected_answer": "Each P2P platform must independently perform KYC for lenders, and the aggregate exposure limit of Rs 50 lakh applies across all platforms, requiring cross-platform monitoring.",
+    "relevant_documents": ["Master_Direction_P2P_Lending.pdf", "Master_Direction_KYC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 63,
+    "question": "Compare the loan agreement disclosure requirements under fair practices code with the Key Fact Statement under digital lending.",
+    "expected_answer": "FPC requires clear communication of terms in loan agreement in borrower's language, while digital lending adds a standardized KFS format with APR, recovery mechanism, and cooling off period details upfront.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf", "Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 64,
+    "question": "How does the IRAC classification apply to restructured loans in the context of microfinance lending?",
+    "expected_answer": "Restructured microfinance loans get reclassified based on the revised terms but must meet additional criteria, with the overall household income assessment cap still applying.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf", "Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 65,
+    "question": "How do the NOF requirements change when an NBFC transitions from Base Layer to Middle Layer under SBR?",
+    "expected_answer": "As NBFCs move from BL to ML, enhanced NOF requirements and CRAR norms apply with higher minimum Tier I capital ratios required for systemically important classification.",
+    "relevant_documents": ["Scale_Based_Regulation_Framework_NBFC.pdf", "Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 66,
+    "question": "How do HFC-specific regulations interact with digital lending guidelines for online home loan origination?",
+    "expected_answer": "HFCs originating home loans digitally must comply with both HFC-specific norms on LTV ratios and digital lending guidelines on KFS, cooling off, and data storage requirements.",
+    "relevant_documents": ["Master_Direction_Housing_Finance_Companies.pdf", "Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 67,
+    "question": "Explain the interaction between concentration risk limits and priority sector targets for a large NBFC-ML.",
+    "expected_answer": "NBFC-ML must manage single borrower (25% Tier I) and group exposure (40% Tier I) limits while simultaneously meeting priority sector sub-targets for agriculture, MSME, and weaker sections.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf", "Master_Direction_Priority_Sector_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 68,
+    "question": "How do enhanced KYC due diligence requirements differ for customers accessing loans through digital lending platforms versus branch-based applications?",
+    "expected_answer": "Digital lending requires video KYC or V-CIP as alternative to in-person verification, with additional data protection requirements, while branch-based allows standard document verification.",
+    "relevant_documents": ["Master_Direction_KYC.pdf", "Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 69,
+    "question": "How does the audit committee's role evolve across the SBR layers, specifically regarding IRAC compliance?",
+    "expected_answer": "Upper layer NBFCs require enhanced audit committee oversight with majority independent directors reviewing IRAC compliance, while base layer has minimal audit committee requirements.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf", "Master_Direction_IRAC_Norms_NBFC.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 70,
+    "question": "How do recovery practices for microfinance loans differ from general NBFC loans under the fair practices code?",
+    "expected_answer": "Microfinance recovery must account for household income constraints and cannot push borrower obligations beyond 50% threshold, while general FPC prohibits intimidation and requires adherence to timings.",
+    "relevant_documents": ["Master_Direction_Microfinance_Loans.pdf", "Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 71,
+    "question": "What implications does the Account Aggregator framework have for HFC underwriting processes?",
+    "expected_answer": "AA framework enables HFCs to access consented financial data for income verification and credit assessment but HFCs must still maintain their own underwriting standards and LTV norms.",
+    "relevant_documents": ["Master_Direction_Account_Aggregator.pdf", "Master_Direction_Housing_Finance_Companies.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 72,
+    "question": "Compare the interest rate charging practices allowed for P2P platforms versus microfinance institutions.",
+    "expected_answer": "P2P platforms facilitate market-determined rates between lenders and borrowers within NBFC framework, while MFIs have specific margin caps over cost of funds.",
+    "relevant_documents": ["Master_Direction_P2P_Lending.pdf", "Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 73,
+    "question": "How do the provisioning requirements change when an NBFC's HFC subsidiary has exposure to both housing and non-housing loans?",
+    "expected_answer": "HFC subsidiary applies differentiated provisioning with lower rates for individual housing loans, while non-housing commercial loans follow general NBFC IRAC provisioning norms.",
+    "relevant_documents": ["Master_Direction_Housing_Finance_Companies.pdf", "Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 74,
+    "question": "What are the combined regulatory requirements when an NBFC-UL originates digital microfinance loans?",
+    "expected_answer": "NBFC-UL must satisfy enhanced CRAR, governance norms, microfinance household income caps, digital lending KFS/cooling-off requirements, and IRAC provisioning norms simultaneously.",
+    "relevant_documents": ["Scale_Based_Regulation_Framework_NBFC.pdf", "Master_Direction_Microfinance_Loans.pdf", "Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 75,
+    "question": "How do the outsourcing norms for data handling align with the account aggregator data sharing framework?",
+    "expected_answer": "Outsourcing norms prohibit sharing customer data without consent and require data protection agreements, while AA framework enables consent-based data sharing through regulated intermediaries.",
+    "relevant_documents": ["Master_Direction_Outsourcing_NBFC.pdf", "Master_Direction_Account_Aggregator.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 76,
+    "question": "If an NBFC wants to classify its digital microfinance portfolio under priority sector, what combined regulatory requirements must it satisfy?",
+    "expected_answer": "Must satisfy microfinance household income cap, digital lending guidelines, priority sector classification criteria for weaker sections/small finance, and IRAC norms for the portfolio.",
+    "relevant_documents": ["Master_Direction_Microfinance_Loans.pdf", "Digital_Lending_Guidelines_2022.pdf", "Master_Direction_Priority_Sector_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 77,
+    "question": "What dual compliance framework applies to an NBFC-IFC that also has housing finance operations?",
+    "expected_answer": "NBFC-IFC must maintain 75% assets in infrastructure while housing operations fall under HFC direction for LTV, provisioning, and NOF, creating dual compliance requirements.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf", "Master_Direction_Housing_Finance_Companies.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 78,
+    "question": "How does the risk management committee oversight change for digital lending operations across the SBR layers?",
+    "expected_answer": "Upper layer requires formal RMC oversight over digital lending risks including algorithmic lending and technology risks, while base layer has lighter governance with general board oversight.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf", "Digital_Lending_Guidelines_2022.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 79,
+    "question": "Explain how FPC requirements for loan rejection transparency interact with digital lending guidelines for automated decision making.",
+    "expected_answer": "FPC requires written rejection reasons, while digital lending adds requirements for transparency in algorithm-based decisions, meaning automated rejections must still provide clear reasoning.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf", "Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 80,
+    "question": "What is the interaction between P2P lending exposure limits and the overall NBFC concentration risk framework?",
+    "expected_answer": "P2P platforms have standalone exposure caps (Rs 50L per lender, Rs 50L per borrower) independent of general NBFC concentration norms, as P2P is a distinct NBFC category.",
+    "relevant_documents": ["Master_Direction_P2P_Lending.pdf", "Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "multi_hop",
+    "answerable": true
+  },
+  {
+    "id": 81,
+    "question": "What is the impact of GST rate changes on NBFC capital adequacy calculations?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 82,
+    "question": "What is the current MCLR rate set by the State Bank of India?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 83,
+    "question": "What is the RBI's monetary policy stance for the current quarter?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 84,
+    "question": "How many NBFCs are currently registered with RBI?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 85,
+    "question": "What are the SEBI regulations for NBFC mutual fund distribution?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 86,
+    "question": "What is the current repo rate announced by RBI?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 87,
+    "question": "What are the income tax implications for NBFC profits under the new tax regime?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 88,
+    "question": "What is the market share of top 5 NBFCs in India?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 89,
+    "question": "What is the NPA ratio of the Indian banking sector as a whole?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 90,
+    "question": "What are the European Banking Authority regulations for fintech lending?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 91,
+    "question": "How does the US CFPB framework compare with RBI's digital lending guidelines?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 92,
+    "question": "What is the RBI penalty imposed on specific NBFCs for regulatory violations this year?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 93,
+    "question": "What are the cryptocurrency lending regulations for NBFCs?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 94,
+    "question": "What is the latest credit growth forecast for NBFCs published by CRISIL?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 95,
+    "question": "What are the Labour Law compliance requirements for NBFC employees?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 96,
+    "question": "How does the Companies Act 2013 interact with NBFC registration requirements?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 97,
+    "question": "What are the National Housing Bank refinancing rates for HFCs?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 98,
+    "question": "What is the RBI's approach to regulating AI-based credit scoring models?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 99,
+    "question": "What are the insurance bundling regulations for NBFC loan products?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 100,
+    "question": "What is the Insolvency and Bankruptcy Code process for NBFC resolution?",
+    "expected_answer": "",
+    "relevant_documents": [],
+    "relevant_chunks": [],
+    "category": "unanswerable",
+    "answerable": false
+  },
+  {
+    "id": 101,
+    "question": "Can an NBFC classify a restructured standard asset as standard immediately after restructuring?",
+    "expected_answer": "Restructured accounts should be classified as sub-standard during the specified period even if the account is otherwise regular.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 102,
+    "question": "If an NBFC has a Tier I capital of Rs 200 crore, what is the maximum it can lend to a single borrower group?",
+    "expected_answer": "Maximum exposure to a single group = 40% of Tier I = Rs 80 crore.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 103,
+    "question": "If a household has annual income of Rs 3.5 lakh, can it qualify for a microfinance loan?",
+    "expected_answer": "No, microfinance loans are for households with annual income up to Rs 3 lakh. Rs 3.5 lakh exceeds the threshold.",
+    "relevant_documents": ["Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 104,
+    "question": "Can a lender invest Rs 30 lakh on one P2P platform and Rs 30 lakh on another?",
+    "expected_answer": "No, the aggregate exposure across all P2P platforms cannot exceed Rs 50 lakh. A total of Rs 60 lakh would violate this limit.",
+    "relevant_documents": ["Master_Direction_P2P_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 105,
+    "question": "What happens to an NBFC's deposit-taking ability if its credit rating falls below investment grade?",
+    "expected_answer": "The NBFC would no longer be eligible to accept public deposits as minimum investment grade rating is a prerequisite for deposit acceptance.",
+    "relevant_documents": ["Master_Direction_NBFC_Non_Systemically_Important.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 106,
+    "question": "If an NBFC's asset size grows from Rs 400 crore to Rs 600 crore, what new regulatory obligations arise?",
+    "expected_answer": "The NBFC would be reclassified from non-systemically important to systemically important (threshold Rs 500 crore), requiring compliance with enhanced CRAR, governance, and reporting norms.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 107,
+    "question": "Can an NBFC use recovery agents to call borrowers at 9 PM?",
+    "expected_answer": "Recovery agents must contact borrowers only within appropriate hours and in no case before 7 AM or after 7 PM as per fair practices code.",
+    "relevant_documents": ["Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 108,
+    "question": "What would happen if an NBFC outsources its internal audit function?",
+    "expected_answer": "This would violate the outsourcing guidelines as internal audit is a core management function that cannot be outsourced.",
+    "relevant_documents": ["Master_Direction_Outsourcing_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 109,
+    "question": "Can a digital lending platform disburse a loan to a third-party wallet instead of the borrower's bank account?",
+    "expected_answer": "No, under digital lending guidelines, loan disbursement must be made directly to the borrower's bank account. Disbursement through third-party accounts is prohibited.",
+    "relevant_documents": ["Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 110,
+    "question": "If a borrower wants to exit a digitally originated loan after 2 days, what are their rights?",
+    "expected_answer": "Under the cooling off / look-up period provision in digital lending guidelines, the borrower can exit the loan within the stipulated period and pay only proportionate interest.",
+    "relevant_documents": ["Digital_Lending_Guidelines_2022.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 111,
+    "question": "How should an NBFC-ML classify a loan where interest has been overdue for 75 days?",
+    "expected_answer": "Since the overdue period is less than 90 days, the asset would still be classified as a standard asset as per IRAC norms.",
+    "relevant_documents": ["Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 112,
+    "question": "What are the implications if an HFC's housing finance portfolio drops below 50% of total assets?",
+    "expected_answer": "HFCs must ensure principal business is housing finance. If housing portfolio drops significantly below requirements, it may affect their HFC classification and require reclassification.",
+    "relevant_documents": ["Master_Direction_Housing_Finance_Companies.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 113,
+    "question": "Can a P2P NBFC provide an assured return to lenders on its platform?",
+    "expected_answer": "No, NBFC-P2P cannot provide or assure any guaranteed returns as they cannot provide credit enhancement or guarantee of any sort.",
+    "relevant_documents": ["Master_Direction_P2P_Lending.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 114,
+    "question": "If an NBFC's CRAR falls to 13%, what actions should it take?",
+    "expected_answer": "Since 13% is below the minimum 15% CRAR requirement, the NBFC must take immediate corrective action including restricting dividend payments, stopping balance sheet expansion, and raising capital.",
+    "relevant_documents": ["Master_Direction_NBFC_Systemically_Important.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 115,
+    "question": "What compliance requirements arise when an NBFC starts lending through a mobile app for the first time?",
+    "expected_answer": "NBFC must comply with digital lending guidelines including appointing nodal grievance officer, providing KFS, implementing cooling off period, ensuring direct bank account disbursement, and data privacy compliance.",
+    "relevant_documents": ["Digital_Lending_Guidelines_2022.pdf", "Master_Direction_Fair_Practices_Code_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 116,
+    "question": "What is the impact on an NBFC if it fails to register equitable mortgage with CERSAI within the prescribed timeline?",
+    "expected_answer": "Failure to register within 30 days may result in the security interest being unenforceable against certain classes of creditors and could attract regulatory action.",
+    "relevant_documents": ["Master_Direction_Housing_Finance_Companies.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 117,
+    "question": "If an Account Aggregator shares data without explicit customer consent, what regulatory violation occurs?",
+    "expected_answer": "This violates the fundamental principle of consent-based data sharing under the AA framework. The AA could face regulatory action including cancellation of registration.",
+    "relevant_documents": ["Master_Direction_Account_Aggregator.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 118,
+    "question": "Can an NBFC in the Base Layer appoint only 2 independent directors on a 6-member board?",
+    "expected_answer": "Base Layer NBFCs have lighter governance requirements, but the specific board composition depends on applicable company law and any additional RBI directions for that layer.",
+    "relevant_documents": ["Corporate_Governance_NBFC.pdf", "Scale_Based_Regulation_Framework_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 119,
+    "question": "What happens to the priority sector classification of a loan if it turns NPA?",
+    "expected_answer": "The NPA classification does not change the priority sector classification of the loan. The loan continues to be counted under priority sector even if it becomes NPA.",
+    "relevant_documents": ["Master_Direction_Priority_Sector_Lending.pdf", "Master_Direction_IRAC_Norms_NBFC.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  },
+  {
+    "id": 120,
+    "question": "If a microfinance borrower's household income increases to Rs 4 lakh mid-term, does the existing loan need to be reclassified?",
+    "expected_answer": "The income assessment is done at the time of origination. An existing microfinance loan need not be reclassified if the borrower's income increases subsequently.",
+    "relevant_documents": ["Master_Direction_Microfinance_Loans.pdf"],
+    "relevant_chunks": [],
+    "category": "inference",
+    "answerable": true
+  }
+]
