@@ -36,7 +36,9 @@ class Embedder:
 
         logger.info("Loading embedding model: %s", self.model_name)
         self.model = SentenceTransformer(self.model_name)
-        self.dimension = self.model.get_sentence_embedding_dimension()
+        # sentence-transformers 5.x renamed this method; keep a fallback for older versions
+        get_dim = getattr(self.model, "get_embedding_dimension", None) or self.model.get_sentence_embedding_dimension
+        self.dimension = get_dim()
         logger.info(
             "Embedding model loaded — dimension: %d, is_bge: %s",
             self.dimension,

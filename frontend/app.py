@@ -9,6 +9,7 @@ Features:
   - Evaluation metrics dashboard
 """
 
+import html
 import json
 import time
 from pathlib import Path
@@ -55,6 +56,8 @@ st.markdown("""
         font-size: 0.95rem;
     }
 
+    /* These cards use light backgrounds, so text colours are set explicitly —
+       otherwise the app's theme (e.g. dark mode) renders white text on them. */
     .answer-card {
         background: #f8fafc;
         border-left: 4px solid #3b82f6;
@@ -62,7 +65,9 @@ st.markdown("""
         border-radius: 0 12px 12px 0;
         margin: 1rem 0;
         line-height: 1.7;
+        color: #1e293b;
     }
+    .answer-card strong { color: #0f172a; }
 
     .citation-badge {
         display: inline-block;
@@ -105,7 +110,9 @@ st.markdown("""
         padding: 1rem;
         margin: 0.5rem 0;
         font-size: 0.9rem;
+        color: #1e293b;
     }
+    .context-panel em { color: #334155; }
 
     .abstention-card {
         background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
@@ -113,6 +120,7 @@ st.markdown("""
         padding: 1.5rem;
         border-radius: 0 12px 12px 0;
         margin: 1rem 0;
+        color: #7f1d1d;
     }
 
     .timing-badge {
@@ -245,9 +253,14 @@ def main():
 
         st.divider()
         st.markdown("### 📝 Example Questions")
-        for q in EXAMPLE_QUESTIONS:
-            if st.button(q[:60] + "...", key=f"ex_{hash(q)}", use_container_width=True):
-                st.session_state["query_input"] = q
+        for i, q in enumerate(EXAMPLE_QUESTIONS):
+            label = q if len(q) <= 60 else q[:57] + "..."
+            if st.button(label, key=f"ex_{i}", use_container_width=True):
+                # Write to the text area's own widget key. This runs before the
+                # text area is created, which is the only point Streamlit allows
+                # a widget's state to be set.
+                st.session_state["query_box"] = q
+                st.session_state["run_query"] = True
 
     # ── Main Content ─────────────────────────────────────────────────
 
@@ -256,7 +269,6 @@ def main():
     with col1:
         query = st.text_area(
             "Ask a regulatory question:",
-            value=st.session_state.get("query_input", ""),
             height=80,
             placeholder="e.g., What is the minimum CRAR requirement for NBFC-ML?",
             key="query_box",
@@ -266,8 +278,11 @@ def main():
         st.write("")
         ask_button = st.button("🔍 Ask", type="primary", use_container_width=True)
 
+    # Clicking an example question triggers the search on this rerun
+    auto_run = st.session_state.pop("run_query", False)
+
     # Process Query
-    if ask_button and query.strip():
+    if (ask_button or auto_run) and query.strip():
         with st.spinner("🔄 Searching policy documents..."):
             result = query_api(query.strip(), strategy, top_k)
 
@@ -297,11 +312,12 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
             else:
-                st.markdown(f"""
-                <div class="answer-card">
-                    {result.get('answer', 'No answer generated.')}
-                </div>
-                """, unsafe_allow_html=True)
+                # Escape model/document text before injecting into HTML; keep line breaks
+                answer_html = html.escape(result.get("answer", "No answer generated.")).replace("\n", "<br/>")
+                st.markdown(
+                    f'<div class="answer-card">{answer_html}</div>',
+                    unsafe_allow_html=True,
+                )
 
             # ── Citations ────────────────────────────────────────────
             citations = result.get("citations", [])

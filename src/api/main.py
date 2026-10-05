@@ -228,10 +228,19 @@ async def query(request: QueryRequest) -> QueryResponse:
 
     # ── 4. Generation ────────────────────────────────────────────────
     t_gen = time.perf_counter()
-    gen_result = _pipeline["generator"].generate(
-        question=question,
-        context_chunks=reranked,
-    )
+    try:
+        gen_result = _pipeline["generator"].generate(
+            question=question,
+            context_chunks=reranked,
+        )
+    except Exception as e:
+        # Upstream LLM failures (bad API key, quota, network) are not server bugs
+        logger.exception("LLM generation failed")
+        raise HTTPException(
+            502,
+            f"LLM generation failed ({type(e).__name__}). "
+            "Check OPENAI_API_KEY / GOOGLE_API_KEY and LLM_PROVIDER in .env.",
+        )
     generation_ms = (time.perf_counter() - t_gen) * 1000
 
     # ── 5. Citation Verification ─────────────────────────────────────

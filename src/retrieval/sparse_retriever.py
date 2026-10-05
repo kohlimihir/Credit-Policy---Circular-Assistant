@@ -83,7 +83,9 @@ class SparseRetriever:
             List of dicts with 'text', 'score', and metadata.
         """
         if self._bm25 is None:
-            raise RuntimeError("BM25 index not built. Call build_index() first.")
+            # No index yet (e.g. before first ingestion): degrade to dense-only search
+            logger.warning("BM25 index not built — sparse search returns no results")
+            return []
 
         settings = get_settings()
         top_k = top_k or settings.sparse_top_k

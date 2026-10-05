@@ -1,0 +1,18 @@
+initial text_area value=''
+sidebar buttons=8
+example buttons=8
+after click text_area value='What is the minimum CRAR requirement for NBFC-ML under RBI directions?'
+run_query flag left in state=False
+exception=[]
+timing badges rendered=True
+answer rendered=True
+answer snippet: <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * { font-family: 'Inter', sans-serif; }
+
+    .main-header {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        padding: 2rem;
+        border-
+answer snippet: <div class="answer-card">Retrieval-only mode (no LLM configured). Most relevant passages from the policy documents:<br/><br/>1. (1) An NBFC primarily engaged in lending against gold jewellery shall maintain a minimum Tier 1 capital and Capital to Risk-weighted Asset Ratio (CRAR) of 12 per cent and 1

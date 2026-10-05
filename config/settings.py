@@ -26,7 +26,8 @@ class Settings(BaseSettings):
     # ── LLM ──────────────────────────────────────────────────────────────
     openai_api_key: str = ""
     google_api_key: str = ""
-    llm_provider: Literal["openai", "google"] = "openai"
+    # "none" = retrieval-only mode: no LLM call, answer is built from top passages
+    llm_provider: Literal["openai", "google", "none"] = "openai"
     llm_model: str = "gpt-4o"
 
     # ── Embedding ────────────────────────────────────────────────────────

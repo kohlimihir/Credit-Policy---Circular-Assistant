@@ -166,13 +166,15 @@ class DenseRetriever:
                 ]
             )
 
-        results = self.client.search(
+        # `search()` was removed in qdrant-client 1.13+; `query_points()` replaces it.
+        response = self.client.query_points(
             collection_name=self.collection_name,
-            query_vector=query_embedding.tolist(),
+            query=query_embedding.tolist(),
             limit=top_k,
             query_filter=query_filter,
             with_payload=True,
         )
+        results = response.points
 
         return [
             {

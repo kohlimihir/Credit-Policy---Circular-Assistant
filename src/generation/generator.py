@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import time
 from typing import Any
 
@@ -80,6 +81,9 @@ class RAGGenerator:
             except ImportError:
                 logger.error("openai package not installed")
                 raise
+        elif self.settings.llm_provider == "none":
+            self._provider = "none"
+            logger.info("Retrieval-only mode: no LLM configured, answers are extractive")
         elif self.settings.llm_provider == "google":
             try:
                 import google.generativeai as genai
@@ -118,7 +122,9 @@ class RAGGenerator:
         context_str = self._format_context(context_chunks)
 
         # Generate based on provider
-        if self._provider == "openai":
+        if self._provider == "none":
+            result = self._generate_extractive(question, context_chunks)
+        elif self._provider == "openai":
             result = self._generate_openai(
                 question, context_str, temperature, max_tokens
             )
@@ -151,6 +157,77 @@ class RAGGenerator:
             )
             parts.append(f"{header}{chunk.get('text', '')}\n")
         return "\n".join(parts)
+
+    # ── Retrieval-only (no LLM) ──────────────────────────────────────────
+
+    _STOPWORDS = frozenset(
+        "a an the of for to in on at by is are was were be what which who how why when "
+        "does do did can could should shall will would under as per with and or from "
+        "that this these those it its their there any all rbi nbfc nbfcs".split()
+    )
+
+    @classmethod
+    def _query_terms(cls, text: str) -> set[str]:
+        words = re.findall(r"[a-z0-9]+(?:-[a-z0-9]+)*", text.lower())
+        return {w for w in words if w not in cls._STOPWORDS and len(w) > 2}
+
+    @staticmethod
+    def _citation_safe(text: str) -> str:
+        """Strip characters that would break the [Title, Section, Page N] format."""
+        text = re.sub(r"[\[\],]", " ", text)
+        text = re.sub(r"\.{3,}", " ", text)  # table-of-contents dot leaders
+        return re.sub(r"\s+", " ", text).strip()
+
+    def _best_sentences(self, text: str, terms: set[str], limit: int = 2) -> str:
+        """Pick the sentences that share the most terms with the question."""
+        sentences = [
+            s.strip()
+            for s in re.split(r"(?<=[.;:])\s+|\n{2,}", re.sub(r"[ \t]+", " ", text))
+            if len(s.strip()) > 30
+        ]
+        if not sentences:
+            return text.strip()[:400]
+
+        scored = [
+            (len(terms & self._query_terms(s)), i, s) for i, s in enumerate(sentences)
+        ]
+        top = sorted(scored, key=lambda x: (-x[0], x[1]))[:limit]
+        # Keep the original reading order for the chosen sentences
+        excerpt = " ".join(s for _, _, s in sorted(top, key=lambda x: x[1]))
+        excerpt = re.sub(r"\s*\n\s*", " ", excerpt)
+        return excerpt[:600] + ("…" if len(excerpt) > 600 else "")
+
+    def _generate_extractive(
+        self,
+        question: str,
+        context_chunks: list[dict[str, Any]],
+        max_passages: int = 3,
+    ) -> dict[str, Any]:
+        """
+        Build an answer from the top reranked passages, without calling an LLM.
+
+        Each passage is cited in the same [Title, Section, Page N] format the LLM
+        uses, so the citation verifier and the UI work unchanged.
+        """
+        terms = self._query_terms(question)
+        lines = [
+            "Retrieval-only mode (no LLM configured). "
+            "Most relevant passages from the policy documents:",
+            "",
+        ]
+        for i, chunk in enumerate(context_chunks[:max_passages], 1):
+            title = self._citation_safe(chunk.get("document_title", "") or "Unknown document")
+            hierarchy = chunk.get("section_hierarchy") or []
+            section = self._citation_safe(hierarchy[-1])[:80] if hierarchy else "N/A"
+            page = chunk.get("page_number") or 0
+            excerpt = self._best_sentences(chunk.get("text", ""), terms)
+            lines.append(f"{i}. {excerpt} [{title}, {section}, Page {page}]")
+            lines.append("")
+
+        return {
+            "answer": "\n".join(lines).strip(),
+            "token_usage": {"prompt": 0, "completion": 0, "total": 0},
+        }
 
     def _generate_openai(
         self,
