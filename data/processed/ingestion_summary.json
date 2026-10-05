@@ -1,0 +1,18 @@
+{
+  "documents_parsed": 15,
+  "strategies": {
+    "fixed_512": {
+      "chunks_created": 523,
+      "avg_tokens": 503.51816443594646
+    },
+    "recursive_overlap": {
+      "chunks_created": 779,
+      "avg_tokens": 344.4736842105263
+    },
+    "structural": {
+      "chunks_created": 1994,
+      "avg_tokens": 131.64794383149447
+    }
+  },
+  "total_time_seconds": 409.22
+}

@@ -32,11 +32,16 @@ class BenchmarkRunner:
     | Structural+Rerank | 0.89     | 0.81 | 0.92         | 0.90/0.92      | 3.5s    |
     """
 
+    # All three chunking strategies are benchmarked with the SAME pipeline
+    # (hybrid retrieval + cross-encoder reranking), so the comparison isolates
+    # chunking as the only variable. `structural_norerank` is the ablation that
+    # isolates the reranker's contribution.
     STRATEGIES = [
         "fixed_512",
         "recursive_overlap",
         "structural",
     ]
+    ABLATION = "structural_norerank"
 
     def __init__(
         self,
@@ -106,6 +111,9 @@ class BenchmarkRunner:
                 "relevant_ids": relevant_ids,
                 "relevant_documents": relevant_docs,
                 "retrieved_ids": response.get("retrieved_ids", []),
+                # Source document of each retrieved chunk, in rank order.
+                # This is what retrieval metrics are scored against.
+                "retrieved_documents": response.get("retrieved_documents", []),
                 "answer": response.get("answer", ""),
                 "context_chunks": response.get("context_chunks", []),
                 "abstained": response.get("abstained", False),
@@ -115,8 +123,14 @@ class BenchmarkRunner:
             if (i + 1) % 10 == 0:
                 logger.info("  Processed %d / %d questions", i + 1, len(gold))
 
-        # Compute aggregate metrics
-        metrics = self.evaluator.compute_aggregate_metrics(results)
+        # Abstention depends on the cross-encoder score. Without reranking there
+        # is no comparably-scaled score, so the metric is not evaluated instead
+        # of being reported as a meaningless number.
+        evaluate_abstention = "norerank" not in strategy_name
+
+        metrics = self.evaluator.compute_aggregate_metrics(
+            results, evaluate_abstention=evaluate_abstention
+        )
         metrics["strategy"] = strategy_name
 
         # Save detailed results
@@ -136,17 +150,18 @@ class BenchmarkRunner:
     def run_all_strategies(
         self,
         query_fn,
-        include_reranked: bool = True,
+        include_ablation: bool = True,
     ) -> list[dict[str, Any]]:
         """
         Run benchmarks for all strategies and produce comparison.
 
         Args:
             query_fn: Callable(question: str, strategy: str) -> response dict.
-            include_reranked: If True, also benchmarks structural+rerank.
+            include_ablation: If True, also runs structural without reranking
+                to quantify how much the reranker contributes.
 
         Returns:
-            List of metrics dicts, one per strategy.
+            List of metrics dicts, one per configuration.
         """
         all_metrics: list[dict[str, Any]] = []
 
@@ -154,8 +169,8 @@ class BenchmarkRunner:
             metrics = self.run_strategy_benchmark(strategy, query_fn)
             all_metrics.append(metrics)
 
-        if include_reranked:
-            metrics = self.run_strategy_benchmark("structural_reranked", query_fn)
+        if include_ablation:
+            metrics = self.run_strategy_benchmark(self.ABLATION, query_fn)
             all_metrics.append(metrics)
 
         # Produce comparison table
@@ -178,29 +193,43 @@ class BenchmarkRunner:
     @staticmethod
     def _format_comparison_table(metrics_list: list[dict[str, Any]]) -> str:
         """Format metrics into a Markdown comparison table."""
+        n_eval = next(
+            (m.get("retrieval", {}).get("n_evaluated", 0) for m in metrics_list), 0
+        )
         header = (
             "# Chunking Strategy Comparison\n\n"
-            "| Strategy | Recall@5 | MRR | Faithfulness | "
-            "Abstention P/R | p50 Latency | p95 Latency |\n"
-            "|----------|----------|-----|--------------|"
-            "----------------|-------------|-------------|\n"
+            f"Retrieval metrics are **document-level**, scored on the {n_eval} "
+            "answerable gold questions that carry labelled source documents.\n"
+            "Abstention metrics use all 120 questions (20 are deliberately "
+            "unanswerable).\n\n"
+            "| Strategy | R@1 | R@3 | R@5 | MRR | Faithful | Abstain P/R | p50 | p95 |\n"
+            "|---|---|---|---|---|---|---|---|---|\n"
         )
 
         rows: list[str] = []
         for m in metrics_list:
             strategy = m.get("strategy", "unknown")
-            recall = m.get("retrieval", {}).get("recall_at_5", 0)
-            mrr = m.get("retrieval", {}).get("mrr", 0)
-            faith = m.get("faithfulness", {}).get("mean", 0)
-            abs_p = m.get("abstention", {}).get("abstention_precision", 0)
-            abs_r = m.get("abstention", {}).get("abstention_recall", 0)
-            p50 = m.get("latency", {}).get("p50", 0)
-            p95 = m.get("latency", {}).get("p95", 0)
+            ret = m.get("retrieval", {})
+            abst = m.get("abstention", {})
 
-            row = (
-                f"| {strategy} | {recall:.4f} | {mrr:.4f} | {faith:.4f} | "
-                f"{abs_p:.2f}/{abs_r:.2f} | {p50:.0f}ms | {p95:.0f}ms |"
+            if abst.get("evaluated") is False:
+                abstention_cell = "n/a"
+            else:
+                abstention_cell = (
+                    f"{abst.get('abstention_precision', 0):.2f}/"
+                    f"{abst.get('abstention_recall', 0):.2f}"
+                )
+
+            rows.append(
+                f"| {strategy} "
+                f"| {ret.get('recall_at_1', 0):.3f} "
+                f"| {ret.get('recall_at_3', 0):.3f} "
+                f"| {ret.get('recall_at_5', 0):.3f} "
+                f"| {ret.get('mrr', 0):.3f} "
+                f"| {m.get('faithfulness', {}).get('mean', 0):.3f} "
+                f"| {abstention_cell} "
+                f"| {m.get('latency', {}).get('p50', 0):.0f}ms "
+                f"| {m.get('latency', {}).get('p95', 0):.0f}ms |"
             )
-            rows.append(row)
 
         return header + "\n".join(rows) + "\n"

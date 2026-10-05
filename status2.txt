@@ -1,0 +1,13 @@
+OK      src/evaluation/evaluator.py
+OK      src/evaluation/benchmark.py
+OK      scripts/run_evaluation.py
+OK      frontend/app.py
+OK    recall@5=1.0 (exp 1.0)  rr=1.0 (exp 1.0)
+OK    recall@5=1.0 (exp 1.0)  rr=0.5 (exp 0.5)
+OK    recall@5=0.0 (exp 0.0)  rr=0.0 (exp 0.0)
+OK    recall@5=1.0 (exp 1.0)  rr=1.0 (exp 1.0)
+OK    recall@1=0.5 (exp 0.5)  rr=1.0 (exp 1.0)
+OK    recall@5=0.6667 (exp 0.6667)  rr=0.5 (exp 0.5)
+aggregate: {"recall_at_1": 0.5, "recall_at_3": 0.75, "recall_at_5": 0.75, "mrr": 0.75, "n_evaluated": 2, "level": "document", "by_category": {"easy_lookup": {"n": 1, "recall_at_5": 1.0, "mrr": 1.0}, "multi_hop": {"n": 1, "recall_at_5": 0.5, "mrr": 0.5}}}
+abstention: {"abstention_precision": 1.0, "abstention_recall": 1.0, "abstention_f1": 1.0, "abstention_accuracy": 1.0, "true_positives": 1, "false_positives": 0, "false_negatives": 0, "true_negatives": 2}
+abstention when disabled: {"evaluated": false, "reason": "no calibrated score for this configuration"}

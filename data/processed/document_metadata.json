@@ -8,14 +8,14 @@
     "category": "guidelines",
     "issuing_department": "DOR",
     "applicable_to": [
-      "NBFC-AA",
-      "Non-Banking Financial\nCompanies",
-      "NBFC-ML",
+      "NBFC-MFI",
       "Non-Banking Financial Companies",
-      "NBFC-P2P",
-      "NBFC-BL",
       "NBFC-D",
-      "NBFC-MFI"
+      "NBFC-P2P",
+      "NBFC-AA",
+      "NBFC-ML",
+      "Non-Banking Financial\nCompanies",
+      "NBFC-BL"
     ],
     "total_pages": 23,
     "sections": [
@@ -541,10 +541,10 @@
     "category": "guidelines",
     "issuing_department": "DOR",
     "applicable_to": [
-      "Non-Banking Financial Companies",
       "Non-Banking\nFinancial Companies",
-      "Non-Banking Financial\nCompanies",
-      "all NBFCs"
+      "Non-Banking Financial Companies",
+      "all NBFCs",
+      "Non-Banking Financial\nCompanies"
     ],
     "total_pages": 31,
     "sections": [
@@ -2548,9 +2548,9 @@
     "category": "unknown",
     "issuing_department": "DoR",
     "applicable_to": [
-      "Non-Banking Financial Companies",
       "Non-Banking\nFinancial Companies",
-      "NBFC-AA"
+      "NBFC-AA",
+      "Non-Banking Financial Companies"
     ],
     "total_pages": 24,
     "sections": [
@@ -3041,11 +3041,11 @@
     "category": "guidelines",
     "issuing_department": "DOR",
     "applicable_to": [
-      "Non-Banking Financial\nCompanies",
+      "NBFC-MFI",
       "Non-Banking Financial Companies",
-      "NBFC-P2P",
       "NBFC-D",
-      "NBFC-MFI"
+      "NBFC-P2P",
+      "Non-Banking Financial\nCompanies"
     ],
     "total_pages": 37,
     "sections": [
@@ -3760,10 +3760,10 @@
     "category": "fair_practices_code",
     "issuing_department": "DoR",
     "applicable_to": [
-      "Non-Banking Financial Companies",
       "Non-Banking\nFinancial Companies",
-      "Housing Finance Companies",
-      "Housing Finance\nCompanies"
+      "Non-Banking Financial Companies",
+      "Housing Finance\nCompanies",
+      "Housing Finance Companies"
     ],
     "total_pages": 108,
     "sections": [
@@ -6144,10 +6144,10 @@
     "category": "unknown",
     "issuing_department": "DOR",
     "applicable_to": [
-      "Non-Banking Financial Companies",
       "Non-Banking\nFinancial Companies",
-      "NBFC-D",
-      "all NBFCs"
+      "Non-Banking Financial Companies",
+      "all NBFCs",
+      "NBFC-D"
     ],
     "total_pages": 26,
     "sections": [
@@ -6491,8 +6491,8 @@
     "category": "guidelines",
     "issuing_department": "DOR",
     "applicable_to": [
-      "Non-Banking Financial Companies",
-      "Non-Banking\nFinancial Companies"
+      "Non-Banking\nFinancial Companies",
+      "Non-Banking Financial Companies"
     ],
     "total_pages": 96,
     "sections": [
@@ -8565,12 +8565,12 @@
     "category": "unknown",
     "issuing_department": "DOR",
     "applicable_to": [
-      "Non-Banking Financial\nCompanies",
-      "Microfinance\nInstitution",
+      "Non-Banking\nFinancial Companies",
+      "NBFC-MFI",
       "Non-Banking Financial Companies",
       "Microfinance Institution",
-      "NBFC-MFI",
-      "Non-Banking\nFinancial Companies"
+      "Microfinance\nInstitution",
+      "Non-Banking Financial\nCompanies"
     ],
     "total_pages": 19,
     "sections": [
@@ -9750,12 +9750,12 @@
     "category": "guidelines",
     "issuing_department": "DOR",
     "applicable_to": [
+      "Non-Banking\nFinancial Companies",
+      "NBFC-MFI",
+      "Non-Banking Financial Companies",
       "Micro Finance Institution",
       "Non-Banking Financial\nCompanies",
-      "NBFC-ML",
-      "Non-Banking Financial Companies",
-      "NBFC-MFI",
-      "Non-Banking\nFinancial Companies"
+      "NBFC-ML"
     ],
     "total_pages": 58,
     "sections": [
@@ -13558,10 +13558,10 @@
     "category": "notification",
     "issuing_department": "DOR",
     "applicable_to": [
-      "Non-Banking Financial Companies",
-      "Non-Banking\nFinancial Companies",
       "NBFC-P2P",
-      "Non-Banking Financial\nCompanies"
+      "Non-Banking Financial Companies",
+      "Non-Banking Financial\nCompanies",
+      "Non-Banking\nFinancial Companies"
     ],
     "total_pages": 24,
     "sections": [
@@ -14865,15 +14865,15 @@
     "category": "master_direction",
     "issuing_department": "DOR",
     "applicable_to": [
-      "NBFC-AA",
-      "Non-Banking Financial\nCompanies",
+      "Non-Banking\nFinancial Companies",
       "Housing Finance Companies",
+      "NBFC-MFI",
       "Non-Banking Financial Companies",
-      "NBFC-P2P",
       "Microfinance Institution",
       "NBFC-D",
-      "NBFC-MFI",
-      "Non-Banking\nFinancial Companies"
+      "NBFC-P2P",
+      "NBFC-AA",
+      "Non-Banking Financial\nCompanies"
     ],
     "total_pages": 31,
     "sections": [

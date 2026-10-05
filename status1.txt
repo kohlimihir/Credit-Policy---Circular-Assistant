@@ -1,0 +1,4 @@
+collections: ['credit_policy']
+  credit_policy: points=1994 status=green
+bm25_index.json  3744 KB
+document_metadata.json  631 KB

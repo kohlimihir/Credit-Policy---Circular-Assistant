@@ -1,0 +1,208 @@
+[
+  {
+    "retrieval": {
+      "recall_at_1": 0.6233,
+      "recall_at_3": 0.74,
+      "recall_at_5": 0.7717,
+      "mrr": 0.8192,
+      "n_evaluated": 100,
+      "level": "document",
+      "by_category": {
+        "easy_lookup": {
+          "n": 50,
+          "recall_at_5": 0.85,
+          "mrr": 0.8133
+        },
+        "inference": {
+          "n": 20,
+          "recall_at_5": 0.725,
+          "mrr": 0.8
+        },
+        "multi_hop": {
+          "n": 30,
+          "recall_at_5": 0.6722,
+          "mrr": 0.8417
+        }
+      }
+    },
+    "abstention": {
+      "abstention_precision": 0.3636,
+      "abstention_recall": 0.6,
+      "abstention_f1": 0.4528,
+      "abstention_accuracy": 0.7583,
+      "true_positives": 12,
+      "false_positives": 21,
+      "false_negatives": 8,
+      "true_negatives": 79
+    },
+    "faithfulness": {
+      "mean": 0.5787,
+      "min": 0.4286,
+      "n_evaluated": 87
+    },
+    "latency": {
+      "p50": 638.0,
+      "p75": 651.4,
+      "p90": 670.1,
+      "p95": 680.0,
+      "p99": 693.2,
+      "mean": 652.4,
+      "max": 1820.1
+    },
+    "total_questions": 120,
+    "strategy": "fixed_512"
+  },
+  {
+    "retrieval": {
+      "recall_at_1": 0.5833,
+      "recall_at_3": 0.7667,
+      "recall_at_5": 0.8067,
+      "mrr": 0.812,
+      "n_evaluated": 100,
+      "level": "document",
+      "by_category": {
+        "easy_lookup": {
+          "n": 50,
+          "recall_at_5": 0.89,
+          "mrr": 0.775
+        },
+        "inference": {
+          "n": 20,
+          "recall_at_5": 0.725,
+          "mrr": 0.81
+        },
+        "multi_hop": {
+          "n": 30,
+          "recall_at_5": 0.7222,
+          "mrr": 0.875
+        }
+      }
+    },
+    "abstention": {
+      "abstention_precision": 0.3333,
+      "abstention_recall": 0.6,
+      "abstention_f1": 0.4286,
+      "abstention_accuracy": 0.7333,
+      "true_positives": 12,
+      "false_positives": 24,
+      "false_negatives": 8,
+      "true_negatives": 76
+    },
+    "faithfulness": {
+      "mean": 0.6323,
+      "min": 0.5,
+      "n_evaluated": 84
+    },
+    "latency": {
+      "p50": 646.0,
+      "p75": 665.9,
+      "p90": 688.4,
+      "p95": 696.5,
+      "p99": 735.1,
+      "mean": 648.4,
+      "max": 1044.9
+    },
+    "total_questions": 120,
+    "strategy": "recursive_overlap"
+  },
+  {
+    "retrieval": {
+      "recall_at_1": 0.61,
+      "recall_at_3": 0.77,
+      "recall_at_5": 0.8133,
+      "mrr": 0.8283,
+      "n_evaluated": 100,
+      "level": "document",
+      "by_category": {
+        "easy_lookup": {
+          "n": 50,
+          "recall_at_5": 0.93,
+          "mrr": 0.82
+        },
+        "inference": {
+          "n": 20,
+          "recall_at_5": 0.7,
+          "mrr": 0.775
+        },
+        "multi_hop": {
+          "n": 30,
+          "recall_at_5": 0.6944,
+          "mrr": 0.8778
+        }
+      }
+    },
+    "abstention": {
+      "abstention_precision": 0.3871,
+      "abstention_recall": 0.6,
+      "abstention_f1": 0.4706,
+      "abstention_accuracy": 0.775,
+      "true_positives": 12,
+      "false_positives": 19,
+      "false_negatives": 8,
+      "true_negatives": 81
+    },
+    "faithfulness": {
+      "mean": 0.6679,
+      "min": 0.4545,
+      "n_evaluated": 89
+    },
+    "latency": {
+      "p50": 517.2,
+      "p75": 538.4,
+      "p90": 583.9,
+      "p95": 595.6,
+      "p99": 691.7,
+      "mean": 530.8,
+      "max": 937.2
+    },
+    "total_questions": 120,
+    "strategy": "structural"
+  },
+  {
+    "retrieval": {
+      "recall_at_1": 0.6083,
+      "recall_at_3": 0.755,
+      "recall_at_5": 0.82,
+      "mrr": 0.827,
+      "n_evaluated": 100,
+      "level": "document",
+      "by_category": {
+        "easy_lookup": {
+          "n": 50,
+          "recall_at_5": 0.93,
+          "mrr": 0.8307
+        },
+        "inference": {
+          "n": 20,
+          "recall_at_5": 0.775,
+          "mrr": 0.8
+        },
+        "multi_hop": {
+          "n": 30,
+          "recall_at_5": 0.6667,
+          "mrr": 0.8389
+        }
+      }
+    },
+    "abstention": {
+      "evaluated": false,
+      "reason": "no calibrated score for this configuration"
+    },
+    "faithfulness": {
+      "mean": 0.6721,
+      "min": 0.4,
+      "n_evaluated": 120
+    },
+    "latency": {
+      "p50": 51.1,
+      "p75": 60.4,
+      "p90": 77.0,
+      "p95": 92.8,
+      "p99": 100.3,
+      "mean": 54.7,
+      "max": 105.2
+    },
+    "total_questions": 120,
+    "strategy": "structural_norerank"
+  }
+]

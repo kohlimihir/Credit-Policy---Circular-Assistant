@@ -236,12 +236,30 @@ analytical deliverable.
   units, so this should beat A and B on retrieval quality. This is the strategy the system
   defaults to.
 
-#### A real constraint on Strategy C
-`structural_max_chunk_size = 1024` tokens, but **BGE's maximum input is 512 tokens**.
-Chunks above 512 tokens are silently **truncated** when embedded, so the tail of a long
-section is invisible to dense retrieval (BM25 still sees it, since BM25 has no length
-limit). Either lower the structural cap to 512, or switch to a long-context embedder.
-This is exactly the kind of detail a strong interviewer probes.
+#### What the three strategies actually produced on this corpus
+
+Measured during ingestion of the same 15 PDFs:
+
+| Strategy | Chunks | Avg tokens/chunk |
+|---|---|---|
+| `fixed_512` | 523 | 504 |
+| `recursive_overlap` | 779 | 344 |
+| `structural` | **1,994** | **132** |
+
+This is the single most informative number pair in the project, and it was not obvious in
+advance. Structural chunking produced **nearly 4x more chunks at a quarter the size**,
+because RBI documents are densely subdivided: the metadata extractor detected 338 section
+headings in the Housing Finance direction alone, so "one chunk per section" yields many
+small chunks.
+
+That cuts both ways. Small chunks are precise, so a retrieved chunk is likely to be
+exactly the relevant clause, which helps citation accuracy. But they carry little
+surrounding context, so a clause whose meaning depends on its parent paragraph may be
+retrieved without the qualifying text. It also means the `max_chunk_size = 1024` cap
+almost never binds, which in turn means the concern that chunks would exceed **BGE's
+512-token input limit** and be silently truncated is largely moot in practice: at an
+average of 132 tokens, very few chunks come close. The truncation risk is real for
+`fixed_512` (avg 504, so chunks sit right at the limit) rather than for structural.
 
 ### Chunk metadata
 
@@ -812,9 +830,34 @@ Useful to quote, since they are from this corpus on this machine:
 | Rerank score, out-of-domain question | -4.68 |
 | Citations verified in test answers | 3 of 3, zero unverified |
 
-The ~2 s retrieval time is dominated by query embedding and BM25 scoring over 1,994 chunks
-in pure Python, not by Qdrant, which answers in milliseconds. First obvious optimisations:
-keep the BM25 index warm, or replace it with Qdrant's native sparse vectors.
+### Where the latency actually goes (measured, not assumed)
+
+An earlier draft of this document assumed BM25 and query embedding dominated retrieval
+latency. Instrumented per-stage logging during the benchmark run disproved that:
+
+| Stage | Measured |
+|---|---|
+| Dense search (Qdrant HTTP round trip) | **~2,050 ms** |
+| Cross-encoder rerank (50 pairs) | ~2,400 ms |
+| Query embedding | ~50 to 1,000 ms |
+| **BM25 sparse search** | **~12 to 28 ms** |
+| RRF fusion | <1 ms |
+| Extractive generation | 2 to 5 ms |
+
+Two conclusions, both counter-intuitive:
+
+1. **BM25 was never the bottleneck.** It is roughly 100x faster than the dense path,
+   because `rank_bm25` is numpy-vectorised internally. The in-process design is a
+   correctness and scaling concern, not a speed one.
+2. **Qdrant was not slow; DNS was.** 2 seconds for a local vector search over 2,000
+   vectors is implausible. The cause is the `localhost` hostname: on Windows it resolves
+   to `::1` (IPv6) first, and that attempt has to fail before the client falls back to
+   IPv4. Setting `QDRANT_HOST=127.0.0.1` removes the round trip entirely.
+
+The lesson worth repeating in an interview: the per-stage timings were already being
+computed in `HybridRetriever.search` (`embed_ms`, `dense_ms`, `sparse_ms`, `fuse_ms`) but
+were never logged, so the bottleneck was mis-attributed by guesswork for far longer than
+necessary. Instrument first, optimise second.
 
 ---
 
@@ -823,10 +866,23 @@ keep the BM25 index warm, or replace it with Qdrant's native sparse vectors.
 Interviewers consistently rate honest, specific self-critique above polish. Ranked by
 severity:
 
+**Fixed since the first draft:**
+
+| Was | Fix applied |
+|---|---|
+| `relevant_chunks` empty, so Recall@5 and MRR were 0 | Retrieval is now scored at **document level** against `relevant_documents`, over the 100 answerable questions. Recall@1/@3/@5, MRR and a per-category breakdown are reported |
+| Reranker applied to only 1 of 4 benchmarked strategies | Reranking now runs for **every** strategy, so the chunking comparison is apples-to-apples. `structural_norerank` was added as an explicit ablation to isolate the reranker's contribution |
+| Abstention metrics reported for configurations with no comparable score | Abstention is now marked **unevaluated** for the no-rerank ablation rather than reported as a misleading number |
+| Retrievers rebuilt per question in the benchmark, reloading a multi-MB BM25 index 480 times | Retrievers are cached per strategy |
+| Gold set referenced a filename never saved to disk (the aliased interest-rate direction) | Aliases are read from `manifest.json` and applied before scoring; any gold document still missing from the corpus is logged as a warning |
+| `localhost` added ~2s to every Qdrant request via IPv6 fallback | `QDRANT_HOST=127.0.0.1` |
+| LLM auth failure surfaced as a 500 with a traceback | Returns a 502 naming the likely cause |
+| Answer invisible in dark theme; example questions did not run | Explicit text colours; example buttons write to the widget key and trigger the search |
+
+**Still open:**
+
 | Gap | Impact | Fix |
 |---|---|---|
-| `relevant_chunks` empty in gold set | Recall@5 and MRR are 0, so the headline metrics are unusable | Score against `relevant_documents` by mapping chunks to source files |
-| Reranker skipped for 3 of 4 strategies in evaluation | Comparison table is invalid | Rerank uniformly; make rerank-on/off its own ablation axis |
 | Abstention threshold not calibrated | Safety control is a guess | Sweep threshold on the gold set, choose from a cost matrix, optionally sigmoid the logit |
 | Structural chunks up to 1024 tokens vs BGE's 512 limit | Tail of long sections invisible to dense retrieval | Cap at 512, or use a long-context embedder |
 | `/ingest` with `strategy="all"` raises `UnboundLocalError` | Endpoint broken on that path | Move the import to module scope |
