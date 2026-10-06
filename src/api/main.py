@@ -65,35 +65,58 @@ async def lifespan(app: FastAPI):
         from src.generation.citation_verifier import CitationVerifier
 
         embedder = Embedder()
-        dense = DenseRetriever()
-        sparse = SparseRetriever()
-
-        # Try to load saved BM25 index
-        bm25_path = settings.processed_dir / "bm25_index.json"
-        if bm25_path.exists():
-            sparse.load(bm25_path)
-            logger.info("Loaded BM25 index from %s", bm25_path)
-        else:
-            logger.warning("No BM25 index found at %s — sparse search disabled until ingestion", bm25_path)
-
-        hybrid = HybridRetriever(embedder, dense, sparse)
         reranker = CrossEncoderReranker()
         generator = RAGGenerator()
         abstention = AbstentionChecker()
         verifier = CitationVerifier()
 
+        # ── Build per-strategy retrievers ────────────────────────────
+        # The ingestion script creates separate Qdrant collections and
+        # BM25 index files for each chunking strategy. We mirror that
+        # layout here so the /query endpoint can route to the correct
+        # retriever based on the requested strategy.
+        strategy_names = ["structural", "recursive_overlap", "fixed_512"]
+        hybrid_retrievers: dict[str, HybridRetriever] = {}
+
+        for strat in strategy_names:
+            collection_name = f"{settings.qdrant_collection}_{strat}"
+            dense = DenseRetriever(
+                collection_name=collection_name,
+                embedding_dim=settings.embedding_dim,
+            )
+
+            sparse = SparseRetriever()
+            bm25_path = settings.processed_dir / f"bm25_index_{strat}.json"
+            if bm25_path.exists():
+                sparse.load(bm25_path)
+                logger.info("Loaded BM25 index for strategy '%s' from %s", strat, bm25_path)
+            else:
+                logger.warning(
+                    "No BM25 index found for strategy '%s' at %s — sparse search disabled",
+                    strat, bm25_path,
+                )
+
+            hybrid = HybridRetriever(embedder, dense, sparse)
+            hybrid_retrievers[strat] = hybrid
+
+        # Keep a default dense retriever for health-check point count
+        # (uses the structural collection as the canonical one).
+        default_dense = DenseRetriever(
+            collection_name=f"{settings.qdrant_collection}_structural",
+            embedding_dim=settings.embedding_dim,
+        )
+
         _pipeline.update({
             "embedder": embedder,
-            "dense": dense,
-            "sparse": sparse,
-            "hybrid": hybrid,
+            "dense": default_dense,
+            "hybrid_retrievers": hybrid_retrievers,
             "reranker": reranker,
             "generator": generator,
             "abstention": abstention,
             "verifier": verifier,
             "ready": True,
         })
-        logger.info("Pipeline initialized successfully")
+        logger.info("Pipeline initialized successfully — strategies: %s", list(hybrid_retrievers.keys()))
 
     except Exception as e:
         logger.error("Failed to initialize pipeline: %s", str(e))
@@ -153,10 +176,22 @@ async def query(request: QueryRequest) -> QueryResponse:
 
     # ── 1. Hybrid Retrieval ──────────────────────────────────────────
     t_retrieval = time.perf_counter()
-    hybrid_results = _pipeline["hybrid"].search(
+
+    # Select the retriever that corresponds to the requested strategy.
+    hybrid_retrievers = _pipeline["hybrid_retrievers"]
+    if strategy not in hybrid_retrievers:
+        raise HTTPException(
+            400,
+            f"Unknown strategy '{strategy}'. "
+            f"Available: {list(hybrid_retrievers.keys())}",
+        )
+    hybrid = hybrid_retrievers[strategy]
+
+    hybrid_results = hybrid.search(
         query=question,
         top_k=50,
-        strategy_filter=strategy,
+        # No strategy_filter needed: each retriever already targets the
+        # correct Qdrant collection and BM25 index for this strategy.
     )
     retrieval_ms = (time.perf_counter() - t_retrieval) * 1000
 
@@ -424,7 +459,6 @@ async def ingest(request: IngestRequest) -> IngestResponse:
             for name, chunker in strategies.items():
                 chunks = []
                 for doc, meta_dict in zip(documents, all_metadata):
-                    from src.ingestion.metadata_extractor import DocumentMetadata
                     meta_obj = extractor.extract(doc)
                     doc_chunks = chunker.chunk(doc, meta_obj)
                     chunks.extend(doc_chunks)
@@ -434,17 +468,19 @@ async def ingest(request: IngestRequest) -> IngestResponse:
                 embeddings = _pipeline["embedder"].embed_documents(texts)
 
                 collection_name = f"{settings.qdrant_collection}_{name}"
+                from src.retrieval.dense_retriever import DenseRetriever
                 dense = DenseRetriever(
                     collection_name=collection_name,
                     embedding_dim=_pipeline["embedder"].dimension,
                 )
-                from src.retrieval.dense_retriever import DenseRetriever
                 dense.create_collection(recreate=request.recreate_collection)
                 dense.upsert_chunks(chunks, embeddings)
 
                 # Build BM25 index
-                _pipeline["sparse"].build_index(chunks)
-                _pipeline["sparse"].save(
+                from src.retrieval.sparse_retriever import SparseRetriever
+                sparse = SparseRetriever()
+                sparse.build_index(chunks)
+                sparse.save(
                     settings.processed_dir / f"bm25_index_{name}.json"
                 )
 
@@ -463,11 +499,19 @@ async def ingest(request: IngestRequest) -> IngestResponse:
             texts = [c.text for c in chunks]
             embeddings = _pipeline["embedder"].embed_documents(texts)
 
-            _pipeline["dense"].create_collection(recreate=request.recreate_collection)
-            _pipeline["dense"].upsert_chunks(chunks, embeddings)
+            collection_name = f"{settings.qdrant_collection}_{request.strategy}"
+            from src.retrieval.dense_retriever import DenseRetriever
+            dense = DenseRetriever(
+                collection_name=collection_name,
+                embedding_dim=_pipeline["embedder"].dimension,
+            )
+            dense.create_collection(recreate=request.recreate_collection)
+            dense.upsert_chunks(chunks, embeddings)
 
-            _pipeline["sparse"].build_index(chunks)
-            _pipeline["sparse"].save(settings.processed_dir / "bm25_index.json")
+            from src.retrieval.sparse_retriever import SparseRetriever
+            sparse = SparseRetriever()
+            sparse.build_index(chunks)
+            sparse.save(settings.processed_dir / f"bm25_index_{request.strategy}.json")
 
             total_chunks = len(chunks)
 

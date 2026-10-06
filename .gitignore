@@ -1,0 +1,63 @@
+# ============================================================
+# Credit Policy & Circular Assistant — .gitignore
+# ============================================================
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# ── Virtual Environment ─────────────────────────────────────
+venv/
+.venv/
+env/
+
+# ── Environment Variables ───────────────────────────────────
+.env
+
+# ── IDE / Editor ────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ── OS Files ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Pytest ──────────────────────────────────────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+
+# ── Logs ────────────────────────────────────────────────────
+*.log
+
+# ── Data (large files — keep structure, ignore content) ─────
+data/raw_pdfs/*.pdf
+data/processed/
+
+# ── Qdrant local storage ───────────────────────────────────
+qdrant/
+storage/
+snapshots/
+
+# ── Docker ──────────────────────────────────────────────────
+.qdrant-initialized
+
+# ── Markdown files (exclude all except README.md) ──────────
+*.md
+!README.md
+
+# ── Misc ────────────────────────────────────────────────────
+*.txt
+!requirements.txt
